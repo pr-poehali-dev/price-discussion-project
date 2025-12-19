@@ -214,6 +214,39 @@ export default function Index() {
         </div>
       </header>
 
+      <section className="relative h-[400px] overflow-hidden">
+        <img 
+          src="https://cdn.poehali.dev/projects/85e62342-6040-4f4c-9e0a-6d5e43e727eb/files/4cb57555-6555-4e61-9950-1c26b6f5c3ac.jpg"
+          alt="Hero"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/80 to-pink-900/80" />
+        <div className="container mx-auto px-4 h-full relative z-10">
+          <div className="grid md:grid-cols-4 gap-8 h-full items-center">
+            <div className="text-white space-y-4">
+              <Icon name="Zap" size={48} className="mb-2" />
+              <h3 className="text-2xl font-bold">Быстрая доставка</h3>
+              <p className="text-purple-100">Доставим заказ в течение 24 часов по всей России</p>
+            </div>
+            <div className="text-white space-y-4">
+              <Icon name="Shield" size={48} className="mb-2" />
+              <h3 className="text-2xl font-bold">Гарантия качества</h3>
+              <p className="text-purple-100">Только оригинальные товары от проверенных брендов</p>
+            </div>
+            <div className="text-white space-y-4">
+              <Icon name="CreditCard" size={48} className="mb-2" />
+              <h3 className="text-2xl font-bold">Удобная оплата</h3>
+              <p className="text-purple-100">Принимаем карты, электронные кошельки и наличные</p>
+            </div>
+            <div className="text-white space-y-4">
+              <Icon name="Headphones" size={48} className="mb-2" />
+              <h3 className="text-2xl font-bold">Поддержка 24/7</h3>
+              <p className="text-purple-100">Всегда на связи, чтобы помочь с выбором и заказом</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <main className="container mx-auto px-4 py-8">
         {activeTab === 'catalog' && (
           <div className="animate-fade-in">
