@@ -77,13 +77,13 @@ export default function Index() {
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-white to-pink-50">
-      <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-purple-100 shadow-sm">
+    <div className="min-h-screen bg-background">
+      <header className="sticky top-0 z-50 bg-card/95 backdrop-blur-lg border-b border-primary/20 shadow-lg">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <div className="text-3xl">🛍️</div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+              <h1 className="text-2xl font-bold text-primary">
                 ShopHub
               </h1>
             </div>
@@ -93,8 +93,8 @@ export default function Index() {
                 onClick={() => setActiveTab('catalog')}
                 className={`transition-all duration-200 hover:scale-105 ${
                   activeTab === 'catalog'
-                    ? 'text-purple-600 font-semibold'
-                    : 'text-gray-600 hover:text-purple-600'
+                    ? 'text-primary font-semibold'
+                    : 'text-muted-foreground hover:text-primary'
                 }`}
               >
                 Каталог
@@ -214,34 +214,34 @@ export default function Index() {
         </div>
       </header>
 
-      <section className="relative h-[400px] overflow-hidden">
+      <section className="relative h-[500px] overflow-hidden">
         <img 
-          src="https://cdn.poehali.dev/projects/85e62342-6040-4f4c-9e0a-6d5e43e727eb/files/4cb57555-6555-4e61-9950-1c26b6f5c3ac.jpg"
-          alt="Hero"
+          src="https://cdn.poehali.dev/projects/85e62342-6040-4f4c-9e0a-6d5e43e727eb/files/43b76573-dfee-4ce1-93e5-f74135c2b69b.jpg"
+          alt="Gothic Hero"
           className="absolute inset-0 w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-900/80 to-pink-900/80" />
+        <div className="absolute inset-0 bg-black/70" />
         <div className="container mx-auto px-4 h-full relative z-10">
-          <div className="grid md:grid-cols-4 gap-8 h-full items-center">
-            <div className="text-white space-y-4">
-              <Icon name="Zap" size={48} className="mb-2" />
-              <h3 className="text-2xl font-bold">Быстрая доставка</h3>
-              <p className="text-purple-100">Доставим заказ в течение 24 часов по всей России</p>
+          <div className="grid grid-cols-4 gap-0 h-full">
+            <div className="border-r border-primary/30 flex flex-col justify-center items-center text-center px-6 hover:bg-primary/10 transition-all duration-500">
+              <Icon name="Crown" size={56} className="mb-4 text-primary" />
+              <h3 className="text-xl font-bold text-foreground mb-3">Избранные коллекции</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">Эксклюзивные товары из лучших коллекций мира</p>
             </div>
-            <div className="text-white space-y-4">
-              <Icon name="Shield" size={48} className="mb-2" />
-              <h3 className="text-2xl font-bold">Гарантия качества</h3>
-              <p className="text-purple-100">Только оригинальные товары от проверенных брендов</p>
+            <div className="border-r border-primary/30 flex flex-col justify-center items-center text-center px-6 hover:bg-primary/10 transition-all duration-500">
+              <Icon name="Gem" size={56} className="mb-4 text-primary" />
+              <h3 className="text-xl font-bold text-foreground mb-3">Премиальное качество</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">Только подлинные изделия высшего класса</p>
             </div>
-            <div className="text-white space-y-4">
-              <Icon name="CreditCard" size={48} className="mb-2" />
-              <h3 className="text-2xl font-bold">Удобная оплата</h3>
-              <p className="text-purple-100">Принимаем карты, электронные кошельки и наличные</p>
+            <div className="border-r border-primary/30 flex flex-col justify-center items-center text-center px-6 hover:bg-primary/10 transition-all duration-500">
+              <Icon name="Castle" size={56} className="mb-4 text-primary" />
+              <h3 className="text-xl font-bold text-foreground mb-3">Наследие веков</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">Традиции мастерства передающиеся сквозь эпохи</p>
             </div>
-            <div className="text-white space-y-4">
-              <Icon name="Headphones" size={48} className="mb-2" />
-              <h3 className="text-2xl font-bold">Поддержка 24/7</h3>
-              <p className="text-purple-100">Всегда на связи, чтобы помочь с выбором и заказом</p>
+            <div className="flex flex-col justify-center items-center text-center px-6 hover:bg-primary/10 transition-all duration-500">
+              <Icon name="Sparkles" size={56} className="mb-4 text-primary" />
+              <h3 className="text-xl font-bold text-foreground mb-3">Магия деталей</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">Каждый элемент создан с безупречной точностью</p>
             </div>
           </div>
         </div>
@@ -251,17 +251,6 @@ export default function Index() {
         {activeTab === 'catalog' && (
           <div className="animate-fade-in">
             <div className="mb-8 space-y-6">
-              <div className="relative">
-                <Icon name="Search" className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
-                <Input
-                  type="text"
-                  placeholder="Поиск товаров..."
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-10 h-12"
-                />
-              </div>
-
               <div className="flex flex-wrap gap-2">
                 {categories.map((category) => (
                   <Button
@@ -270,8 +259,8 @@ export default function Index() {
                     onClick={() => setSelectedCategory(category)}
                     className={`transition-all duration-200 hover:scale-105 ${
                       selectedCategory === category
-                        ? 'bg-gradient-to-r from-purple-600 to-pink-600'
-                        : ''
+                        ? 'bg-primary text-primary-foreground'
+                        : 'hover:bg-primary/10'
                     }`}
                   >
                     {category}

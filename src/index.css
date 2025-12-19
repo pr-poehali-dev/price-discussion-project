@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Crimson+Text:wght@400;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -6,20 +6,20 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 231 55% 12%;
+    --background: 270 15% 8%;
+    --foreground: 0 0% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 231 55% 12%;
+    --card: 270 12% 12%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 231 55% 12%;
+    --popover: 270 12% 12%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 266 83% 61%;
+    --primary: 280 60% 45%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 291 76% 61%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 270 15% 20%;
+    --secondary-foreground: 0 0% 95%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
@@ -99,7 +99,7 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: "Open Sans", sans-serif;
+    font-family: "Crimson Text", serif;
   }
 
   h1,
@@ -108,6 +108,7 @@
   h4,
   h5,
   h6 {
-    font-family: "Montserrat", sans-serif;
+    font-family: "Cinzel", serif;
+    letter-spacing: 0.05em;
   }
 }
