@@ -287,30 +287,38 @@ export default function Index() {
               </Card>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+            <div className="grid grid-cols-4 gap-8">
               {filteredProducts.map((product, index) => (
                 <Card
                   key={product.id}
-                  className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-1 animate-fade-in overflow-hidden"
+                  className="group hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 animate-fade-in overflow-hidden border-primary/20 bg-card/50 backdrop-blur"
                   style={{ animationDelay: `${index * 0.05}s` }}
                 >
+                  <div className="aspect-square overflow-hidden bg-black/40">
+                    <img 
+                      src={[
+                        'https://cdn.poehali.dev/projects/85e62342-6040-4f4c-9e0a-6d5e43e727eb/files/54f3797e-a987-4dd3-8e80-40f83f0ecb30.jpg',
+                        'https://cdn.poehali.dev/projects/85e62342-6040-4f4c-9e0a-6d5e43e727eb/files/110347fd-7109-4bbb-9f65-b9a4f327e6b7.jpg',
+                        'https://cdn.poehali.dev/projects/85e62342-6040-4f4c-9e0a-6d5e43e727eb/files/0647b0c9-dfc9-499b-aa88-88ed1f6b6df2.jpg'
+                      ][index % 3]}
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                  </div>
                   <CardContent className="pt-6">
-                    <div className="text-6xl mb-4 group-hover:scale-110 transition-transform duration-300 text-center">
-                      {product.image}
-                    </div>
-                    <Badge className="mb-2 bg-purple-100 text-purple-700 hover:bg-purple-100">
+                    <Badge className="mb-3 bg-primary/20 text-primary border-primary/30">
                       {product.category}
                     </Badge>
-                    <h3 className="font-bold text-lg mb-2">{product.name}</h3>
-                    <p className="text-sm text-gray-600 mb-4">{product.description}</p>
-                    <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                    <h3 className="font-bold text-xl mb-3 text-foreground">{product.name}</h3>
+                    <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{product.description}</p>
+                    <div className="text-2xl font-bold text-primary">
                       {product.price.toLocaleString()} ₽
                     </div>
                   </CardContent>
                   <CardFooter>
                     <Button
                       onClick={() => addToCart(product)}
-                      className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 hover:scale-105 transition-transform"
+                      className="w-full bg-primary hover:bg-primary/80 hover:scale-105 transition-all duration-300"
                     >
                       <Icon name="ShoppingCart" size={18} className="mr-2" />
                       В корзину
