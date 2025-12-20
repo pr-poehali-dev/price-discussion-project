@@ -113,18 +113,28 @@ export default function Index() {
                 onClick={() => setActiveTab('profile')}
                 className={`transition-all duration-200 hover:scale-105 ${
                   activeTab === 'profile'
-                    ? 'text-purple-600 font-semibold'
-                    : 'text-gray-600 hover:text-purple-600'
+                    ? 'text-primary font-semibold'
+                    : 'text-muted-foreground hover:text-primary'
                 }`}
               >
                 Профиль
               </button>
               <button
+                onClick={() => setActiveTab('addresses')}
+                className={`transition-all duration-200 hover:scale-105 ${
+                  activeTab === 'addresses'
+                    ? 'text-primary font-semibold'
+                    : 'text-muted-foreground hover:text-primary'
+                }`}
+              >
+                Адреса
+              </button>
+              <button
                 onClick={() => setActiveTab('contacts')}
                 className={`transition-all duration-200 hover:scale-105 ${
                   activeTab === 'contacts'
-                    ? 'text-purple-600 font-semibold'
-                    : 'text-gray-600 hover:text-purple-600'
+                    ? 'text-primary font-semibold'
+                    : 'text-muted-foreground hover:text-primary'
                 }`}
               >
                 Контакты
@@ -250,7 +260,7 @@ export default function Index() {
       <main className="container mx-auto px-4 py-8">
         {activeTab === 'catalog' && (
           <div className="animate-fade-in">
-            <div className="mb-8 space-y-6">
+            <div className="mb-8">
               <div className="flex flex-wrap gap-2">
                 {categories.map((category) => (
                   <Button
@@ -267,24 +277,6 @@ export default function Index() {
                   </Button>
                 ))}
               </div>
-
-              <Card className="p-6">
-                <h3 className="font-semibold mb-4 flex items-center gap-2">
-                  <Icon name="SlidersHorizontal" size={20} />
-                  Фильтр по цене
-                </h3>
-                <Slider
-                  value={priceRange}
-                  onValueChange={setPriceRange}
-                  max={15000}
-                  step={100}
-                  className="mb-4"
-                />
-                <div className="flex justify-between text-sm text-gray-600">
-                  <span>{priceRange[0].toLocaleString()} ₽</span>
-                  <span>{priceRange[1].toLocaleString()} ₽</span>
-                </div>
-              </Card>
             </div>
 
             <div className="grid grid-cols-4 gap-8">
@@ -381,38 +373,94 @@ export default function Index() {
           </div>
         )}
 
+        {activeTab === 'addresses' && (
+          <div className="animate-fade-in max-w-4xl mx-auto">
+            <h2 className="text-3xl font-bold mb-8 text-foreground">Адреса доставки</h2>
+            <div className="space-y-6">
+              <Card className="p-6 border-primary/20 bg-card/50">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <Icon name="Home" size={24} className="text-primary" />
+                    <div>
+                      <h3 className="font-bold text-lg">Основной адрес</h3>
+                      <Badge className="mt-1 bg-primary/20 text-primary border-primary/30">По умолчанию</Badge>
+                    </div>
+                  </div>
+                  <Button variant="outline" size="sm" className="hover:bg-primary/10">
+                    <Icon name="Pencil" size={16} className="mr-2" />
+                    Изменить
+                  </Button>
+                </div>
+                <div className="space-y-2 text-muted-foreground">
+                  <p><span className="font-medium text-foreground">Адрес:</span> г. Москва, ул. Тверская, д. 15, кв. 42</p>
+                  <p><span className="font-medium text-foreground">Получатель:</span> Иван Иванов</p>
+                  <p><span className="font-medium text-foreground">Телефон:</span> +7 (999) 123-45-67</p>
+                </div>
+              </Card>
+
+              <Card className="p-6 border-primary/20 bg-card/50">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center gap-3">
+                    <Icon name="Building2" size={24} className="text-primary" />
+                    <h3 className="font-bold text-lg">Рабочий адрес</h3>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button variant="outline" size="sm" className="hover:bg-primary/10">
+                      <Icon name="Pencil" size={16} className="mr-2" />
+                      Изменить
+                    </Button>
+                    <Button variant="outline" size="sm" className="hover:bg-destructive/10 hover:text-destructive">
+                      <Icon name="Trash2" size={16} />
+                    </Button>
+                  </div>
+                </div>
+                <div className="space-y-2 text-muted-foreground">
+                  <p><span className="font-medium text-foreground">Адрес:</span> г. Москва, Кутузовский проспект, д. 36, офис 1501</p>
+                  <p><span className="font-medium text-foreground">Получатель:</span> Иван Иванов</p>
+                  <p><span className="font-medium text-foreground">Телефон:</span> +7 (495) 789-01-23</p>
+                </div>
+              </Card>
+
+              <Button className="w-full bg-primary hover:bg-primary/80">
+                <Icon name="Plus" size={18} className="mr-2" />
+                Добавить новый адрес
+              </Button>
+            </div>
+          </div>
+        )}
+
         {activeTab === 'contacts' && (
           <div className="animate-fade-in max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold mb-8">Контакты</h2>
+            <h2 className="text-3xl font-bold mb-8 text-foreground">Контакты</h2>
             <div className="grid md:grid-cols-2 gap-6">
-              <Card className="p-6">
+              <Card className="p-6 border-primary/20 bg-card/50">
                 <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                  <Icon name="MapPin" size={24} className="text-purple-600" />
+                  <Icon name="MapPin" size={24} className="text-primary" />
                   Адрес
                 </h3>
-                <p className="text-gray-600 mb-4">г. Москва, ул. Примерная, д. 1</p>
+                <p className="text-muted-foreground mb-4">г. Москва, ул. Примерная, д. 1</p>
                 <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                  <Icon name="Phone" size={24} className="text-purple-600" />
+                  <Icon name="Phone" size={24} className="text-primary" />
                   Телефон
                 </h3>
-                <p className="text-gray-600 mb-4">+7 (495) 123-45-67</p>
+                <p className="text-muted-foreground mb-4">+7 (495) 123-45-67</p>
                 <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
-                  <Icon name="Mail" size={24} className="text-purple-600" />
+                  <Icon name="Mail" size={24} className="text-primary" />
                   Email
                 </h3>
-                <p className="text-gray-600">info@shophub.ru</p>
+                <p className="text-muted-foreground">info@shophub.ru</p>
               </Card>
-              <Card className="p-6">
+              <Card className="p-6 border-primary/20 bg-card/50">
                 <h3 className="text-xl font-bold mb-4">Напишите нам</h3>
                 <div className="space-y-4">
                   <Input placeholder="Ваше имя" />
                   <Input placeholder="Email" type="email" />
                   <Input placeholder="Тема" />
                   <textarea
-                    className="w-full min-h-[120px] p-3 border rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-purple-600"
+                    className="w-full min-h-[120px] p-3 border rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-primary bg-background text-foreground"
                     placeholder="Сообщение"
                   />
-                  <Button className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700">
+                  <Button className="w-full bg-primary hover:bg-primary/80">
                     Отправить
                   </Button>
                 </div>
@@ -422,10 +470,10 @@ export default function Index() {
         )}
       </main>
 
-      <footer className="mt-16 bg-gradient-to-r from-purple-600 to-pink-600 text-white py-8">
+      <footer className="mt-16 bg-card/50 border-t border-primary/20 py-8">
         <div className="container mx-auto px-4 text-center">
-          <p className="font-semibold mb-2">ShopHub — современный интернет-магазин</p>
-          <p className="text-purple-100 text-sm">© 2024 Все права защищены</p>
+          <p className="font-semibold mb-2 text-foreground">ShopHub — современный интернет-магазин</p>
+          <p className="text-muted-foreground text-sm">© 2024 Все права защищены</p>
         </div>
       </footer>
     </div>
